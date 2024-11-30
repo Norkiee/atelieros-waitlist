@@ -1,6 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-let supabase;
+let supabase: SupabaseClient | undefined; // Explicitly type supabase
 
 try {
   const supabaseUrl = process.env.SUPABASE_URL || '';
@@ -18,7 +18,10 @@ try {
   // Initialize Supabase client
   supabase = createClient(supabaseUrl, supabaseAnonKey);
 } catch (error) {
-  console.error('Supabase initialization error:', error instanceof Error ? error.message : error);
+  console.error(
+    'Supabase initialization error:',
+    error instanceof Error ? error.message : error
+  );
 }
 
 export { supabase };
