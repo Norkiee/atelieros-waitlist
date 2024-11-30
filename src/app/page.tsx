@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image'; // Importing Next.js Image component
-import { supabase } from '../lib/supabase';
+import { supabase } from '../lib/supabase'; // Updated supabase import
 
 export default function WaitlistPage() {
   const [email, setEmail] = useState('');
@@ -18,15 +18,19 @@ export default function WaitlistPage() {
       setErrorMessage('');
 
       // Check if email already exists
-      const { data: existing } = await supabase
+      const { data: existing, error: existingError } = await supabase
         .from('waitlist')
         .select('email')
         .eq('email', email)
         .single();
 
+      if (existingError && existingError.code !== 'PGRST116') {
+        throw new Error(existingError.message);
+      }
+
       if (existing) {
         setStatus('error');
-        setErrorMessage('You&apos;re already on the waitlist!');
+        setErrorMessage("You're already on the waitlist!");
         return;
       }
 
@@ -37,22 +41,22 @@ export default function WaitlistPage() {
 
       setStatus('success');
       setEmail('');
-    } catch (error) {
+    } catch (error: any) {
       setStatus('error');
       setErrorMessage('Something went wrong. Please try again.');
-      console.error('Error:', error);
+      console.error('Error:', error.message || error);
     }
   };
 
   return (
     <div className="min-h-screen">
       <div className="px-32 py-8 flex justify-between items-center">
-        {/* Replace <img> with <Image /> */}
+        {/* Replaced <img> with Next.js <Image /> */}
         <Image
           src="/images/atelier.svg"
           alt="atelier OS"
           width={120}
-          height={24} // Explicit dimensions
+          height={24} // Explicit dimensions for optimized images
         />
         <a
           href="https://twitter.com/useatelieros"

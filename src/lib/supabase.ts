@@ -1,27 +1,12 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-let supabase: SupabaseClient | undefined; // Explicitly type supabase
+// Ensure SUPABASE_URL and SUPABASE_ANON_KEY are available at runtime
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
-try {
-  const supabaseUrl = process.env.SUPABASE_URL || '';
-  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '';
-
-  // Log for debugging
-  console.log('Supabase URL:', supabaseUrl);
-  console.log('Supabase Anon Key:', supabaseAnonKey ? 'Provided' : 'Not Provided');
-
-  if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('Supabase environment variables are missing.');
-    throw new Error('Supabase URL and Anon Key must be provided.');
-  }
-
-  // Initialize Supabase client
-  supabase = createClient(supabaseUrl, supabaseAnonKey);
-} catch (error) {
-  console.error(
-    'Supabase initialization error:',
-    error instanceof Error ? error.message : error
-  );
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Supabase URL and Anon Key must be provided as environment variables.');
 }
 
-export { supabase };
+// Always export a valid Supabase client
+export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey);
