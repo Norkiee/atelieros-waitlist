@@ -26,7 +26,7 @@ export default function WaitlistPage() {
 
       if (existing) {
         setStatus('error');
-        setErrorMessage("You're already on the waitlist!");
+        setErrorMessage('You&apos;re already on the waitlist!');
         return;
       }
 
@@ -47,12 +47,12 @@ export default function WaitlistPage() {
   return (
     <div className="min-h-screen">
       <div className="px-32 py-8 flex justify-between items-center">
-        {/* Updated to use Next.js Image */}
+        {/* Replace <img> with <Image /> */}
         <Image
           src="/images/atelier.svg"
           alt="atelier OS"
           width={120}
-          height={24} // Provide explicit width and height
+          height={24} // Explicit dimensions
         />
         <a
           href="https://twitter.com/useatelieros"
@@ -114,90 +114,6 @@ export default function WaitlistPage() {
               Thanks for joining the waitlist! We&apos;ll be in touch soon.
             </p>
           )}
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-16">
-          <div>
-            <div className="h-6 w-6 mb-4 text-[#E2FF66]">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-              </svg>
-            </div>
-            <h3 className="text-xl text-white font-medium mb-3">
-              White-label client portal
-            </h3>
-            <p className="text-gray-400">
-              Turn scattered communications into a premium branded experience. Custom
-              domains, your design, your brand - all managed from one place.
-            </p>
-          </div>
-
-          <div>
-            <div className="h-6 w-6 mb-4 text-[#E2FF66]">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <line x1="18" y1="20" x2="18" y2="10" />
-                <line x1="12" y1="20" x2="12" y2="4" />
-                <line x1="6" y1="20" x2="6" y2="14" />
-              </svg>
-            </div>
-            <h3 className="text-xl text-white font-medium mb-3">
-              Scope management that pays
-            </h3>
-            <p className="text-gray-400">
-              Transform scope creep from a profit killer into a revenue stream. Track
-              changes, assess impact, and manage client expectations effortlessly.
-            </p>
-          </div>
-
-          <div>
-            <div className="h-6 w-6 mb-4 text-[#E2FF66]">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                <line x1="3" y1="9" x2="21" y2="9" />
-                <line x1="9" y1="21" x2="9" y2="9" />
-              </svg>
-            </div>
-            <h3 className="text-xl text-white font-medium mb-3">Project dashboard</h3>
-            <p className="text-gray-400">
-              Keep everything organized and visible. Track progress, manage timelines,
-              and deliver updates - all with professional polish.
-            </p>
-          </div>
-
-          <div>
-            <div className="h-6 w-6 mb-4 text-[#E2FF66]">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M12 3l1.8 5.5h5.7l-4.6 3.3 1.8 5.5-4.7-3.4-4.7 3.4 1.8-5.5-4.6-3.3h5.7z" />
-              </svg>
-            </div>
-            <h3 className="text-xl text-white font-medium mb-3">Smart automation</h3>
-            <p className="text-gray-400">
-              Save hours on routine tasks. Automated updates, scheduled check-ins, and
-              intelligent assistance when you need it.
-            </p>
-          </div>
         </div>
       </div>
     </div>
